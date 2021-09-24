@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.4.21 <0.7.0;
 
 contract SimpleStorage {
@@ -9,11 +10,7 @@ contract SimpleStorage {
         uint256 targetMoney;
     }
 
-    struct Lotto {
-        string lottoname;
-    }
-
-    Project[] public projects,Lotto;
+    Project[] public projects;
 
     function set(uint256 x) public {
         storedData = x;
@@ -34,12 +31,4 @@ contract SimpleStorage {
     function getProjectLength() public returns (uint256) {
         return projects.length;
     }
-
-    function addLotto(
-        string memory _lottoname
-    ) public {
-         Lotto.push(Project(_lottoname));
-    }
-    function getProjectLength() public returns (uint256) {
-        return projects.length;
 }

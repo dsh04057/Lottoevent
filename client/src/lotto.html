@@ -1,0 +1,81 @@
+<HTML>
+    <HEAD>
+    <TITLE> 추첨 프로그램</TITLE>
+    <script>
+      
+    var dataSample = [	["홍길동1"],
+                        ["홍길동2"],
+                        ["홍길동3"],
+                        ["홍길동4"],
+                        ["홍길동5"],
+                        ["홍길동6"],
+                        ["홍길동7"],
+                        ["홍길동8"],
+                        ["홍길동9"],
+                        ["홍길동10"]	];
+    
+    
+    function rand(data) {
+    
+        lotCnt=5;	//추첨인원
+        datalotCnt = data.length;	//자료수
+        winningNumber = new Array(datalotCnt);	//당첨번호
+        winningNumber[0] = 0;
+    
+        for (i=0; i<=lotCnt; i++)
+        {
+          flag = 0;
+    
+          while(flag == 0) {
+            result=Math.floor(Math.random() * datalotCnt);
+    
+            for(j=0; j<=i; j++) {
+               if (result == winningNumber[j]) {
+                flag=0;
+                break;
+               } else {
+                flag=1;
+               }
+            }
+          }
+    
+          winningNumber[i] = result;
+        }
+    
+        temp=0;
+    
+        for (i=0;i<=lotCnt-1;i++)  {
+          for (j=i+1;j<=lotCnt;j++) {
+            if (winningNumber[i] > winningNumber[j]) {
+              temp=winningNumber[i];
+              winningNumber[i]=winningNumber[j];
+              winningNumber[j]=temp;
+            }
+          }
+        }
+    
+    
+        head="<br><br><font color=blue size=4><b>이벤트 당첨자 명단</b></font><br><br>";
+        head+="<table border=1 cellspacing=0 width=591 bordercolordark=white bordercolorlight=#A0ACA0>";
+        head+="<tr><td align=center><font size=2>No.</td><td align=center><font size=2>이름</td></tr>";
+        document.write(head)
+        for (i=1; i<=lotCnt; i++) 
+        {
+          document.write("<tr><td align=center><font size=2>",i,"</td><td>"+ data[winningNumber[i]][0] +"</td></tr>");
+        }
+        document.write("</table>");
+    
+    }
+      
+    </script>
+    </HEAD>
+    
+    <BODY>
+    <div style="padding:50px">
+    <form name="form">
+      <font size=4 color=dodgerblue><b>이벤트 당첨자 추첨 프로그램</b</font><br>
+      <input type="button" value="실행" onClick="rand(dataSample);"><br><br>
+    </form>
+    </div>
+    </BODY>
+    </HTML>
