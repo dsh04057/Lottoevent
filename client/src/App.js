@@ -118,9 +118,9 @@ class App extends Component {
     }
 
     this.setState({ projects });
-  };
+  };''
 
-  render() {
+    render() {
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
@@ -186,7 +186,7 @@ class App extends Component {
         </table>
         <div
           onClick={() => {
-            this.addLotto();
+             this.addLotto();
           }}
         >
           ADD LOTTO
@@ -207,10 +207,20 @@ class App extends Component {
             );
           })}
         </table>
+        <div
+          onClick={() => {
+            this.lotto();
+          }}
+        >
+          lotto
+        </div>
       </div>
     );
   }
 }
+
+
+
 
 
 export default App;
